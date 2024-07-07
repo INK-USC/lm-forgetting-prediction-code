@@ -1,0 +1,3 @@
+fpd:
+  train_step: 500000
+  ckpt_step: 20000

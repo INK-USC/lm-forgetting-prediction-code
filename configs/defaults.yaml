@@ -1,0 +1,237 @@
+exp_group: "p3"
+
+pretrain_ds_dir: "data/p3_pretrain"
+pretrain_test_ds_dir: "data/p3_pretrain_test"
+pt_ds_offset: 0
+ocl_ds_dir: "data/recross_data"
+max_input_length: 512
+max_output_length: 128
+model_name: "resources/BART0-base"
+output_dir: "runs/p3-bart0/super_glue-wsc.fixed"
+learning_rate: 1.0e-6
+
+use_mmlu: false
+mmlu_single_task: false
+use_bbh: false
+use_counterfact: false
+use_alt_p3: false
+ocl_alt_ans_dir: "data/p3_contrast/"
+
+templates:
+  seed: 0
+
+seed: "{seed}"
+
+num_epoch_per_task: 5
+max_step_per_task: -1
+per_device_train_batch_size: 8
+per_device_eval_batch_size: 8
+
+do_replay: true
+replay_freq: 1
+replay_k: 8
+replay_n_step: 1
+replay_n: -1
+do_candidate: true
+cand_k: 100
+mir_with_abs_score: false
+pred_forget_file: null
+
+optim_module_regex: null
+
+seperate_replay_optimizer: false
+replay_optimizer_lr: 1.0e-5
+optimizer_type: AdamW
+
+ocl_steps: 10
+
+num_beams: 3
+max_grad_norm: 1.0
+
+use_eval_mode: false
+mir_no_resample: false
+fix_label_bos: false
+
+# distill
+cl_use_distill: false
+
+distill_reduction: "sum"
+distill_student_temp: 1.0
+distill_teacher_temp: 1.0
+distill_alpha: 1.0
+
+# delay opt
+delay_opt: false
+
+fix_decoder_start_token_id: false
+
+cached_pt_ds: null
+cached_ocl_error_ds: null
+
+ocl_tasks:
+  - super_glue-wsc.fixed
+  - winogrande-winogrande_xl
+  - super_glue-cb
+  - super_glue-rte
+  - anli
+  - super_glue-copa
+  - hellaswag
+  - super_glue-wic
+pt_tasks:
+  - glue-mrpc
+  - glue-qqp
+  - paws_x-en
+  - kilt_tasks-hotpotqa
+  - wiki_qa
+  - adversarial_qa-dbert
+  - adversarial_qa-dbidaf
+  - adversarial_qa-droberta
+  - duorc-SelfRC
+  - duorc-ParaphraseRC
+  - ropes
+  - quoref
+  - cos_e-v1.11
+  - cosmos_qa
+  - dream
+  - qasc
+  - quail
+  - quartz
+  - sciq
+  - social_i_qa
+  - wiki_hop-original
+  - wiqa
+  - amazon_polarity
+  - app_reviews
+  - imdb
+  - rotten_tomatoes
+  - yelp_review_full
+  - common_gen
+  - wiki_bio
+  - cnn_dailymail-3.0.0
+  - gigaword
+  - multi_news
+  - samsum
+  - xsum
+  - ag_news
+  - dbpedia_14
+
+mmlu_tasks:
+  - abstract_algebra
+  - anatomy
+  - astronomy
+  - business_ethics
+  - clinical_knowledge
+  - college_biology
+  - college_chemistry
+  - college_computer_science
+  - college_mathematics
+  - college_medicine
+  - college_physics
+  - computer_security
+  - conceptual_physics
+  - econometrics
+  - electrical_engineering
+  - elementary_mathematics
+  - formal_logic
+  - global_facts
+  - high_school_biology
+  - high_school_chemistry
+  - high_school_computer_science
+  - high_school_european_history
+  - high_school_geography
+  - high_school_government_and_politics
+  - high_school_macroeconomics
+  - high_school_mathematics
+  - high_school_microeconomics
+  - high_school_physics
+  - high_school_psychology
+  - high_school_statistics
+  - high_school_us_history
+  - high_school_world_history
+  - human_aging
+  - human_sexuality
+  - international_law
+  - jurisprudence
+  - logical_fallacies
+  - machine_learning
+  - management
+  - marketing
+  - medical_genetics
+  - miscellaneous
+  - moral_disputes
+  - moral_scenarios
+  - nutrition
+  - philosophy
+  - prehistory
+  - professional_accounting
+  - professional_law
+  - professional_medicine
+  - professional_psychology
+  - public_relations
+  - security_studies
+  - sociology
+  - us_foreign_policy
+  - virology
+  - world_religions
+
+load_ckpt: null
+fix_bos_token_id: false
+
+use_reg_loss: false
+reg_loss_alpha: 1.0
+
+mmlu_max_input_length: 2048
+
+continual_update: false
+
+peft: "none"
+
+truncate_prefix: false
+er_no_repeat: false
+
+in_context_learning: false
+is_episodic: false
+is_subset_exps: false
+
+ocl_alt_ds_dir: null
+
+cached_pt_test_ds: null
+max_bg_test_per_task: 100
+
+use_coreset: false
+
+
+is_seq2seq: true
+is_llama: false
+
+is_random_pt_exps: false
+
+stream:
+  n_step_per_batch: 30
+  pt_eval_every: 10
+  seed: 0
+  n_batch_per_stream: -1
+  bs: 1
+
+is_instance_exp: false
+
+pt_ckpt_dir: null
+
+is_sep_task_exp: false
+
+extend_ocl_ds: false
+extend_multiplier: -1
+
+save_mem: false
+
+is_lm_sft: false
+
+gradient_accumulation_steps: 1
+max_epoch: 100000
+tokenizer_name: null
+
+pt_revision: null
+use_ref_ocl_train_step: false
+use_pred_forget_mat: false
+pt_ds_name: null
+cl_method: "vanilla"

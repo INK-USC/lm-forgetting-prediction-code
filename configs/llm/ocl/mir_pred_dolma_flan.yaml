@@ -1,0 +1,14 @@
+cl_method: "mir_pred"
+use_pred_forget_mat: true
+pred_forget_file: "data/stats/olmo-7b-dolma-ood-full.pkl"
+
+replay_freq: 16
+pt_ds_name: "dolma_sample"
+
+mir_pred_weight_temp: 1.0
+is_mem_chat_format: false
+
+output_dir: "runs_olmo_ocl/flan-5k-mirpred-gt-{CONFIG}/task_{TASK_ID}"
+
+dolma:
+  sample_path: "data/dolma_chunked_sample/stratified_1_100_tokenize_fix.pkl"

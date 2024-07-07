@@ -1,0 +1,28 @@
+output_dir: "runs_olmo_stat/olmo-7b-instruct-peft/mmlu_base/task_{ocl_task_id}"
+
+templates:
+  ocl_task_id: -1
+
+mmlu:
+  path: "data/mmlu/data/"
+  cot_prompt_path: "data/flan-2/mmlu-cot.json"
+  few_shot_k: 5
+
+  is_cot: false
+  is_few_shot: true
+  answer_type: "text"
+  train_split: "dev"
+
+tulu:
+  path: "data/tulu_sample/sample_1k.json"
+
+stat:
+  ocl_task_category: "mmlu"
+  ocl_task_id: "{ocl_task_id}"
+  pt_task_id: -1
+  pt_task_category: "tulu"
+  task_model_dir: ""
+
+exp_group: "mmlu"
+peft: "lora"
+model_name: "allenai/OLMo-7B-Instruct"

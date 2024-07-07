@@ -1,0 +1,10 @@
+tempates:
+  revision: null
+
+pt_revision: "{revision}"
+pt_revision_list: "data/olmo_revisions.txt"
+
+output_dir: "runs_olmo_ocl/flan-5k-revisions/revision_{revision}/task_{TASK_ID}"
+ref_ocl_step_dir: "runs_olmo_ocl/flan-5k"
+use_ref_ocl_train_step: true
+ocl_val_step: 100000000

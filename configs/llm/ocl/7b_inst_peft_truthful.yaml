@@ -1,0 +1,64 @@
+peft: "lora"
+model_name: "allenai/OLMo-7B-Instruct"
+per_device_eval_batch_size: 1
+per_device_train_batch_size: 1
+save_mem: true
+max_input_length: 1024
+stream:
+  bs: 1
+  n_step_per_batch: 1
+
+output_dir: "runs_olmo_ocl/truthful_qa/task_{TASK_ID}"
+
+templates:
+  task_id: "{TASK_ID}"
+
+ocl:
+  task_category: "truthful_qa"
+  task_id: "{TASK_ID}"
+
+exp_group: "truthful_qa"
+
+truthful_qa_tasks:
+  - Nutrition
+  - Stereotypes
+  - Confusion
+  - Psychology
+  - Language
+  - Sociology
+  - Finance
+  - Indexical Error
+  - Science
+  - Misconceptions
+  - Economics
+  - Education
+  - Proverbs
+  - Conspiracies
+  - Religion
+  - Statistics
+  - Misquotations
+  - Subjective
+  - Law
+  - History
+  - Fiction
+  - Mandela Effect
+  - Politics
+  - Misinformation
+  - Logical Falsehood
+  - Distraction
+  - Weather
+  - Myths and Fairytales
+  - Superstitions
+  - Advertising
+  - Paranormal
+  - Health
+
+is_lm_sft: true
+
+grad_accum: 16
+ocl_steps: 300
+max_epoch: 1000
+ocl_val_step: 30
+
+gradient_accumulation_steps: 8
+

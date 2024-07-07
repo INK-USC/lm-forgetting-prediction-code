@@ -1,0 +1,83 @@
+fpd:
+  train_step: 10000
+  train_batch_size: 8
+
+  eval_step: 100
+  eval_batch_size: 8
+
+  grad_accum: 1
+
+  use_fpd_split_file_task_level: false
+  use_fpd_split_file: false
+
+  method: 'rep_pairwise' # or logit_pairwise
+  train_aff_log_path: 'runs/instance-p3-bart0-large/vanilla_bg100_step30_adam_full_greedy_eval_fixbos-lr1e-6/{task}/aff_log.pkl'
+  train_ocl_log_path: 'runs/instance-p3-bart0-large/vanilla_bg100_step30_adam_full_greedy_eval_fixbos-lr1e-6/{task}/fpd_train/ocl_log.pkl'
+  dev_aff_log_path: 'runs/instance-p3-bart0-large/vanilla_bg100_step30_adam_full_greedy_eval_fixbos-lr1e-6/{task}/aff_log.pkl'
+  dev_ocl_log_path: 'runs/instance-p3-bart0-large/vanilla_bg100_step30_adam_full_greedy_eval_fixbos-lr1e-6/{task}/fpd_dev/ocl_log.pkl'
+  require_logits: false
+  train_pt_logits_file: 'runs/instance-p3-bart0-large/vanilla_bg100_lr1e-6_step30_sgd_greedy_eval_fixbos-lr1e-2/{task}/concat_pt_logits_eval.pkl'
+  dev_pt_logits_file: 'runs/instance-p3-bart0-large/vanilla_bg100_lr1e-6_step30_sgd_greedy_eval_fixbos-lr1e-2/{task}/concat_pt_logits_eval.pkl'
+
+
+  train_ocl_update_logits_file: 'runs/instance-p3-bart0-large/vanilla_bg100_step30_adam_full_greedy_eval_fixbos-lr1e-6/{task}/fpd_train/ocl_error_ds_change_v2_logit_change_eval.pkl'
+  dev_ocl_update_logits_file: 'runs/instance-p3-bart0-large/vanilla_bg100_step30_adam_full_greedy_eval_fixbos-lr1e-6/{task}/fpd_dev/ocl_error_ds_change_v2_logit_change_eval.pkl'
+
+  train_concat_pt_ds_dir: 'runs/instance-p3-bart0-large/vanilla_bg100_step30_adam_full_greedy_eval_fixbos-lr1e-6/{task}'
+  train_ocl_error_ds_dir: 'runs/instance-p3-bart0-large/vanilla_bg100_step30_adam_full_greedy_eval_fixbos-lr1e-6/{task}/fpd_train/'
+  dev_concat_pt_ds_dir: 'runs/instance-p3-bart0-large/vanilla_bg100_step30_adam_full_greedy_eval_fixbos-lr1e-6/{task}'
+  dev_ocl_error_ds_dir: 'runs/instance-p3-bart0-large/vanilla_bg100_step30_adam_full_greedy_eval_fixbos-lr1e-6/{task}/fpd_dev/'
+
+  train_pt_update_logits_file: 'runs/instance-p3-bart0-large/vanilla_bg100_step30_adam_full_greedy_eval_fixbos-lr1e-6/super_glue-cb/fpd_train/pt_logits_update_eval.s.pkl'
+  dev_pt_update_logits_file: 'runs/instance-p3-bart0-large/vanilla_bg100_step30_adam_full_greedy_eval_fixbos-lr1e-6/super_glue-cb/fpd_dev/pt_logits_update_eval.s.pkl'
+
+  model_name: 'yuchenlin/BART0'
+  use_head: true
+  normalize: false
+  sum_or_mean: mean
+  temp: 1
+  output_dim: 768
+  lr: 5.0e-6
+  lr_scale: 200
+  rep_type: final
+  ts: 3
+
+  load_model_dir: null
+
+  mtl: false
+  mtl_tasks: null
+
+  multi_token: false
+  compare_tokens: true
+  logit_loss_type: null
+  logit_ocl_ts_only: true
+
+  ckpt_step: 100000000000
+  mtl_balanced: false
+
+  prior: null
+  mask_empty_rep: false
+
+  use_mse_variant: false
+  ignore_zero_token_kl: false
+
+  use_cos_dist: false
+
+  use_margin_variant: false
+  margin_sq: false
+  margin_loss_reweight: false
+  margin_loss_pos_weight: 0.1
+  margin_multi_ts: false
+
+  late_pred_forget: false
+
+  freeze_lm: false
+  vocab_map: false
+
+  margin_value: 1.0
+  ce_loss_pos_weight: 1.0
+
+  norm_by_inverse: false
+  reduce_method: "mean"
+
+  binarilize_labels: false

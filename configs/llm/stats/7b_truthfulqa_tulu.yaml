@@ -1,0 +1,55 @@
+output_dir: "runs_olmo_stat/olmo-7b-instruct-peft/truthful_qa/task_{ocl_task_id}"
+
+templates:
+  ocl_task_id: -1
+
+tulu:
+  path: "data/tulu_sample/sample_1k.json"
+
+stat:
+  ocl_task_category: "truthful_qa"
+  ocl_task_id: "{ocl_task_id}"
+  pt_task_id: -1
+  pt_task_category: "tulu"
+  task_model_dir: "runs_olmo_ocl/truthful_qa/task_{ocl_task_id}/model_save"
+
+
+exp_group: "truthful_qa"
+
+truthful_qa_tasks:
+  - Nutrition
+  - Stereotypes
+  - Confusion
+  - Psychology
+  - Language
+  - Sociology
+  - Finance
+  - Indexical Error
+  - Science
+  - Misconceptions
+  - Economics
+  - Education
+  - Proverbs
+  - Conspiracies
+  - Religion
+  - Statistics
+  - Misquotations
+  - Subjective
+  - Law
+  - History
+  - Fiction
+  - Mandela Effect
+  - Politics
+  - Misinformation
+  - Logical Falsehood
+  - Distraction
+  - Weather
+  - Myths and Fairytales
+  - Superstitions
+  - Advertising
+  - Paranormal
+  - Health
+
+
+peft: "lora"
+model_name: "allenai/OLMo-7B-Instruct"

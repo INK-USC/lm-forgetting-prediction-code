@@ -1,0 +1,102 @@
+flan_by_task_dir: "data/flan_by_task"
+flan_tasks:
+  - aeslc_10templates
+  - ag_news_subset_10templates
+  - anli_r1_10templates
+  - anli_r2_10templates
+  - anli_r3_10templates
+  - arc_challenge_10templates
+  - arc_easy_10templates
+  - bool_q_10templates
+  - cb_10templates
+  - cnn_dailymail_10templates
+  - cola_10templates
+  - common_gen_10templates
+  - copa_10templates
+  - coqa_10templates
+  - cosmos_qa_10templates
+  - dart_10templates
+  - definite_pronoun_resolution_10templates
+  - drop_10templates
+  - e2e_nlg_10templates
+  - fix_punct_10templates
+  - gigaword_10templates
+  - glue_mrpc_10templates
+  - glue_qqp_10templates
+  - hellaswag_10templates
+  - imdb_reviews_10templates
+  - math_dataset_10templates
+  - mnli_matched_10templates
+  - mnli_mismatched_10templates
+  - multi_news_10templates
+  - multirc_10templates
+  - natural_questions_10templates
+  - openbookqa_10templates
+  - opinion_abstracts_idebate_10templates
+  - opinion_abstracts_rotten_tomatoes_10templates
+  - para_crawl_enes_10templates
+  - paws_wiki_10templates
+  - piqa_10templates
+  - qnli_10templates
+  - quac_10templates
+  - record_10templates
+  - rte_10templates
+  - samsum_10templates
+  - sentiment140_10templates
+  - snli_10templates
+  - squad_v1_10templates
+  - squad_v2_10templates
+  - sst2_10templates
+  - story_cloze_10templates
+  - stsb_10templates
+  - trec_10templates
+  - trivia_qa_10templates
+  - true_case_10templates
+  - web_nlg_en_10templates
+  - wic_10templates
+  - wiki_lingua_english_en_10templates
+  - wmt14_enfr_10templates
+  - wmt16_translate_csen_10templates
+  - wmt16_translate_deen_10templates
+  - wmt16_translate_fien_10templates
+  - wmt16_translate_roen_10templates
+  - wmt16_translate_ruen_10templates
+  - wmt16_translate_tren_10templates
+  - wnli_10templates
+  - word_segment_10templates
+  - wsc_10templates
+  - yelp_polarity_reviews_10templates
+
+peft: "lora"
+model_name: "allenai/OLMo-7B"
+per_device_eval_batch_size: 1
+per_device_train_batch_size: 1
+save_mem: true
+max_input_length: 1024
+stream:
+  bs: 1
+  n_step_per_batch: 1
+
+output_dir: "runs_olmo_ocl/flan-5k/task_{TASK_ID}"
+
+templates:
+  task_id: "{TASK_ID}"
+
+ocl:
+  task_category: "flan"
+  task_id: "{TASK_ID}"
+
+exp_group: "flan"
+
+is_lm_sft: true
+
+grad_accum: 16
+ocl_steps: 5000
+max_epoch: 1000
+ocl_val_step: 1000
+ocl_val_max_batch: 100
+
+
+gradient_accumulation_steps: 8
+ans_start_pattern: "<|assistant|>"
+tokenizer_name: "allenai/OLMo-7B-Instruct"

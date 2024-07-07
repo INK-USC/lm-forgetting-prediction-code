@@ -1,0 +1,5 @@
+fpd:
+  method: "rep_task_level"
+  binarilize_labels: true
+output_dir: "runs_olmo/fpd_bin_{postfix}"
+eval_step: 1000

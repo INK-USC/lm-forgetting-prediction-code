@@ -1,0 +1,12 @@
+cl_method: "er"
+use_pred_forget_mat: false
+
+replay_freq: 16
+pt_ds_name: "dolma_sample"
+
+is_mem_chat_format: false
+
+output_dir: "runs_olmo_ocl/flan-5k-er-{CONFIG}/task_{TASK_ID}"
+
+dolma:
+  sample_path: "data/dolma_chunked_sample/stratified_1_100_tokenize_fix.pkl"

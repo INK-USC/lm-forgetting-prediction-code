@@ -1,0 +1,5 @@
+fpd:
+  method: "rep_task_level"
+
+output_dir: "runs_olmo/fpd_{postfix}"
+eval_step: 1000

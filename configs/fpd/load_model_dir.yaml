@@ -1,0 +1,5 @@
+templates:
+  load_model_dir: ""
+
+fpd:
+  load_model_dir: "{load_model_dir}"

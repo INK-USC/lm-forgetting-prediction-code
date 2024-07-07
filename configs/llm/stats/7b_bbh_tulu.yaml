@@ -1,0 +1,53 @@
+output_dir: "runs_olmo_stat/olmo-7b-instruct-peft/bbh/task_{ocl_task_id}"
+
+templates:
+  ocl_task_id: -1
+
+tulu:
+  path: "data/tulu_sample/sample_1k.json"
+
+stat:
+  ocl_task_category: "bbh"
+  ocl_task_id: "{ocl_task_id}"
+  pt_task_id: -1
+  pt_task_category: "tulu"
+  task_model_dir: "runs_olmo_ocl/bbh/task_{ocl_task_id}/model_save"
+
+exp_group: "bbh"
+
+bbh_tasks:
+  - boolean_expressions
+  - causal_judgement
+  - date_understanding
+  - disambiguation_qa
+  - dyck_languages
+  - formal_fallacies
+  - geometric_shapes
+  - hyperbaton
+  - logical_deduction_five_objects
+  - logical_deduction_seven_objects
+  - logical_deduction_three_objects
+  - movie_recommendation
+  - multistep_arithmetic_two
+  - navigate
+  - object_counting
+  - penguins_in_a_table
+  - reasoning_about_colored_objects
+  - ruin_names
+  - salient_translation_error_detection
+  - snarks
+  - sports_understanding
+  - temporal_sequences
+  - tracking_shuffled_objects_five_objects
+  - tracking_shuffled_objects_seven_objects
+  - tracking_shuffled_objects_three_objects
+  - web_of_lies
+  - word_sorting
+bbh:
+  path: "data/BIG-Bench-Hard/bbh_split"
+  prompt_path: "data/BIG-Bench-Hard/cot-prompts"
+  is_cot: false
+
+
+peft: "lora"
+model_name: "allenai/OLMo-7B-Instruct"

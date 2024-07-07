@@ -1,0 +1,21 @@
+output_dir: "runs_olmo_stat/olmo-7b-peft-dolma-tokenize-fix-cl/{cl_method}/flan/task_{ocl_task_id}"
+
+templates:
+  ocl_task_id: -1
+
+dolma:
+  sample_path: "data/dolma_chunked_sample/stratified_1_100_tokenize_fix.pkl"
+
+stat:
+  ocl_task_category: "flan"
+  ocl_task_id: "{ocl_task_id}"
+  pt_task_id: -1
+  pt_task_category: "dolma"
+  task_model_dir: "{task_model_dir}"
+
+exp_group: "dolma"
+
+
+peft: "lora"
+model_name: "allenai/OLMo-7B"
+tokenizer_name: "allenai/OLMo-7B-Instruct"

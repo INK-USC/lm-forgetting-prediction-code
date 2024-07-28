@@ -11,11 +11,8 @@ import pickle
 from peft import AutoPeftModelForCausalLM
 from utils.analysis_tools import get_revision_name
 
-hostname = socket.gethostname()
-if hostname in ['ink-ruby', 'ink-nova']:
-    model_dtype = 'half'
-else:
-    model_dtype = torch.bfloat16
+
+model_dtype = torch.bfloat16
 
 def create_tmp_peft_merged_model(model_name, peft_model_dir, revision):
     model = AutoPeftModelForCausalLM.from_pretrained(peft_model_dir, revision=revision)
